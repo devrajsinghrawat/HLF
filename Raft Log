@@ -1,0 +1,557 @@
+2019-06-19 06:20:49.307 UTC [localconfig] completeInitialization -> INFO 001 Kafka.Version unset, setting to 0.10.2.0
+2019-06-19 06:20:49.320 UTC [orderer.common.server] prettyPrintStruct -> INFO 002 Orderer config values:
+	General.LedgerType = "file"
+	General.ListenAddress = "0.0.0.0"
+	General.ListenPort = 7050
+	General.TLS.Enabled = true
+	General.TLS.PrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.TLS.Certificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.TLS.RootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	General.TLS.ClientAuthRequired = false
+	General.TLS.ClientRootCAs = []
+	General.Cluster.ListenAddress = ""
+	General.Cluster.ListenPort = 0
+	General.Cluster.ServerCertificate = ""
+	General.Cluster.ServerPrivateKey = ""
+	General.Cluster.ClientCertificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.Cluster.ClientPrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.Cluster.RootCAs = []
+	General.Cluster.DialTimeout = 5s
+	General.Cluster.RPCTimeout = 7s
+	General.Cluster.ReplicationBufferSize = 20971520
+	General.Cluster.ReplicationPullTimeout = 5s
+	General.Cluster.ReplicationRetryTimeout = 5s
+	General.Cluster.ReplicationBackgroundRefreshInterval = 5m0s
+	General.Cluster.ReplicationMaxRetries = 12
+	General.Cluster.SendBufferSize = 10
+	General.Cluster.CertExpirationWarningThreshold = 168h0m0s
+	General.Keepalive.ServerMinInterval = 1m0s
+	General.Keepalive.ServerInterval = 2h0m0s
+	General.Keepalive.ServerTimeout = 20s
+	General.GenesisMethod = "file"
+	General.GenesisProfile = "SampleInsecureSolo"
+	General.SystemChannel = "test-system-channel-name"
+	General.GenesisFile = "/var/hyperledger/orderer/orderer.genesis.block"
+	General.Profile.Enabled = false
+	General.Profile.Address = "0.0.0.0:6060"
+	General.LocalMSPDir = "/var/hyperledger/orderer/msp"
+	General.LocalMSPID = "OrdererMSP"
+	General.BCCSP.ProviderName = "SW"
+	General.BCCSP.SwOpts.SecLevel = 256
+	General.BCCSP.SwOpts.HashFamily = "SHA2"
+	General.BCCSP.SwOpts.Ephemeral = false
+	General.BCCSP.SwOpts.FileKeystore.KeyStorePath = "/var/hyperledger/orderer/msp/keystore"
+	General.BCCSP.SwOpts.DummyKeystore =
+	General.BCCSP.SwOpts.InmemKeystore =
+	General.BCCSP.PluginOpts =
+	General.Authentication.TimeWindow = 15m0s
+	FileLedger.Location = "/var/hyperledger/production/orderer"
+	FileLedger.Prefix = "hyperledger-fabric-ordererledger"
+	RAMLedger.HistorySize = 1000
+	Kafka.Retry.ShortInterval = 5s
+	Kafka.Retry.ShortTotal = 10m0s
+	Kafka.Retry.LongInterval = 5m0s
+	Kafka.Retry.LongTotal = 12h0m0s
+	Kafka.Retry.NetworkTimeouts.DialTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.ReadTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.WriteTimeout = 10s
+	Kafka.Retry.Metadata.RetryMax = 3
+	Kafka.Retry.Metadata.RetryBackoff = 250ms
+	Kafka.Retry.Producer.RetryMax = 3
+	Kafka.Retry.Producer.RetryBackoff = 100ms
+	Kafka.Retry.Consumer.RetryBackoff = 2s
+	Kafka.Verbose = true
+	Kafka.Version = 0.10.2.0
+	Kafka.TLS.Enabled = false
+	Kafka.TLS.PrivateKey = ""
+	Kafka.TLS.Certificate = ""
+	Kafka.TLS.RootCAs = []
+	Kafka.TLS.ClientAuthRequired = false
+	Kafka.TLS.ClientRootCAs = []
+	Kafka.SASLPlain.Enabled = false
+	Kafka.SASLPlain.User = ""
+	Kafka.SASLPlain.Password = ""
+	Kafka.Topic.ReplicationFactor = 1
+	Debug.BroadcastTraceDir = ""
+	Debug.DeliverTraceDir = ""
+	Consensus = map[SnapDir:/var/hyperledger/production/orderer/etcdraft/snapshot WALDir:/var/hyperledger/production/orderer/etcdraft/wal]
+	Operations.ListenAddress = "127.0.0.1:8443"
+	Operations.TLS.Enabled = false
+	Operations.TLS.PrivateKey = ""
+	Operations.TLS.Certificate = ""
+	Operations.TLS.RootCAs = []
+	Operations.TLS.ClientAuthRequired = false
+	Operations.TLS.ClientRootCAs = []
+	Metrics.Provider = "disabled"
+	Metrics.Statsd.Network = "udp"
+	Metrics.Statsd.Address = "127.0.0.1:8125"
+	Metrics.Statsd.WriteInterval = 30s
+	Metrics.Statsd.Prefix = ""
+2019-06-19 06:20:52.206 UTC [orderer.common.cluster] loadVerifier -> INFO 003 Loaded verifier for channel byfn-sys-channel from config block at index 0
+2019-06-19 06:20:52.206 UTC [orderer.common.server] initializeServerConfig -> INFO 004 Starting orderer with TLS enabled
+2019-06-19 06:20:52.207 UTC [orderer.common.server] configureClusterListener -> INFO 005 Cluster listener is not configured, defaulting to use the general listener on port 7050
+2019-06-19 06:20:52.207 UTC [orderer.common.server] initializeMultichannelRegistrar -> INFO 006 Not bootstrapping because of existing chains
+2019-06-19 06:20:52.219 UTC [orderer.consensus.etcdraft] detectSelfID -> WARN 007 Could not find -----BEGIN CERTIFICATE-----
+MIICXDCCAgOgAwIBAgIRAIgu3ySoTEPOGqc8Bv0ioRQwCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTkwNjE0MDBaFw0yOTA2MTYwNjE0MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyMi5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABFRL61bwVSAhSQSd5TzKBNfqLdsEnr9xbo+mUC4S1+Av
++Kx+NzrCQyOn2TZgzzTyebftUxyPHBmE5D7InhjSN0+jgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIOwxtBRXmQNorwE9uOSX9LFgkouDRFV2zkghwhXzDccd
+MCkGA1UdEQQiMCCCFG9yZGVyZXIyLmV4YW1wbGUuY29tgghvcmRlcmVyMjAKBggq
+hkjOPQQDAgNHADBEAiB35VxSXvFxxxpN8eQTYR6QJBzfLJ9vpXDaZ3pKz+j9pQIg
+PtJwFr4fNnrRQdntWK+8D0/7NsT/RaXpkdXCw+qpkts=
+-----END CERTIFICATE-----
+ among [-----BEGIN CERTIFICATE-----
+MIICXDCCAgKgAwIBAgIQaGYMH4z0XYr2nFHaV4rx0zAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWTELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHTAbBgNVBAMTFG9yZGVyZXI1LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAE/S/sOVo9ZzYsNuSvyVK/p8T6TQ4ClfiRY/zNPC5YGnHU
+q71Fw5SVcjV+L5zgAvFrZO8IGlr/G3ekYPtvqJ+FfaOBmDCBlTAOBgNVHQ8BAf8E
+BAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQC
+MAAwKwYDVR0jBCQwIoAgYobEsUAE0pUPV/Exe8UYqAYqER5In+a/splF6aMANLAw
+KQYDVR0RBCIwIIIUb3JkZXJlcjUuZXhhbXBsZS5jb22CCG9yZGVyZXI1MAoGCCqG
+SM49BAMCA0gAMEUCIQDFP7c9On9VyD3KUtEbztHQpv5RbRHz51BByY8y9Zx1pgIg
+HG9cRsOs3rp+RZZpHgw5HtRx/1xkIpiM5yGPlZS+h0Y=
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICWDCCAf+gAwIBAgIQTbmB19ktw+NCSzikEbyrhzAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWDELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHDAaBgNVBAMTE29yZGVyZXIuZXhhbXBsZS5jb20wWTATBgcqhkjOPQIB
+BggqhkjOPQMBBwNCAASWvLLpHX8XG+kSRXrEPaM3VIKKFCU589gxX5fPVkblExQY
+M0caCmm+vV97MKKdldTVGusvP5WaybMMas90EqYxo4GWMIGTMA4GA1UdDwEB/wQE
+AwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIw
+ADArBgNVHSMEJDAigCBihsSxQATSlQ9X8TF7xRioBioRHkif5r+ymUXpowA0sDAn
+BgNVHREEIDAeghNvcmRlcmVyLmV4YW1wbGUuY29tggdvcmRlcmVyMAoGCCqGSM49
+BAMCA0cAMEQCIHPYcrNLaW+4x4A/ZRNsorsPFSMGJhGQWkejoxphgt0WAiBvcY5q
+slYhp3ajwJeridTyiMAfLuvG0WKqi0+wiQdLZw==
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXTCCAgOgAwIBAgIRAJ92/8s/DT3y45igLsAk7pswCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTgxNzQ2MDBaFw0yOTA2MTUxNzQ2MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyMi5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABMo5TSK6zvmnjCkVZFAR6UW7xg5yUCnIUHwg4LKG02mj
+iuQMQ9xqJ5pey0WYbOUSB8XFZpv1o90AL3ttw32ssjSjgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIGKGxLFABNKVD1fxMXvFGKgGKhEeSJ/mv7KZRemjADSw
+MCkGA1UdEQQiMCCCFG9yZGVyZXIyLmV4YW1wbGUuY29tgghvcmRlcmVyMjAKBggq
+hkjOPQQDAgNIADBFAiEA6ujAI8KdQCYqaYMAsjF6tr2nhav/MMh02YvOTyJx938C
+IEvr/v5dEHc8iyq8oMiedJI6scEnag3igD0n1PN/IqUY
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXDCCAgKgAwIBAgIQGqA5gKeiBTYjzgZTsXdIRDAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWTELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHTAbBgNVBAMTFG9yZGVyZXIzLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEm5W7oBjHmlrFlM71+UuV/SzxpLoVqNkeyzSqBND2252t
+0tBYzeH/OuyXOTx/xrFXNBVJuEIRtWBtw1Ar5PCN2KOBmDCBlTAOBgNVHQ8BAf8E
+BAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQC
+MAAwKwYDVR0jBCQwIoAgYobEsUAE0pUPV/Exe8UYqAYqER5In+a/splF6aMANLAw
+KQYDVR0RBCIwIIIUb3JkZXJlcjMuZXhhbXBsZS5jb22CCG9yZGVyZXIzMAoGCCqG
+SM49BAMCA0gAMEUCIQC29dgHaVGCeA7szJ6+UTaOoHPt3eO8ezCaoB2zqxsPIgIg
+Fugq3C7cXGsPSslmjrYfSMuEWYYnm2svdAY8DsPlMBM=
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXDCCAgOgAwIBAgIRAOEClgJ3k6Ne8uGgWqg1XKswCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTgxNzQ2MDBaFw0yOTA2MTUxNzQ2MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyNC5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABAOrhKXd+Wl0ErG4wLH1xVW5O0JR2gzlNYX5gG7fRshH
+C7UgpDzb8gi9f8H8AnMziZ/KhoWmhQCgfXKt/LqOLkWjgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIGKGxLFABNKVD1fxMXvFGKgGKhEeSJ/mv7KZRemjADSw
+MCkGA1UdEQQiMCCCFG9yZGVyZXI0LmV4YW1wbGUuY29tgghvcmRlcmVyNDAKBggq
+hkjOPQQDAgNHADBEAiBmZjvsFwGyNK1BPAV95Ny1MP19fvc5BRoILHxG+d4LpAIg
+TDRGfGQQbBABWD6xCzlgTTgirzfKRwKw5nY9hh+YbQ4=
+-----END CERTIFICATE-----
+]
+2019-06-19 06:20:52.219 UTC [orderer.common.server] TrackChain -> INFO 008 Adding byfn-sys-channel to the set of chains to track
+2019-06-19 06:20:52.219 UTC [orderer.commmon.multichannel] Initialize -> INFO 009 Starting system channel 'byfn-sys-channel' with genesis block hash a6f0c69018b193a7582fa436419774b4e5e8e96fb6575965c2e7ad5bb8e9f9e3 and orderer type etcdraft
+2019-06-19 06:20:52.219 UTC [orderer.common.server] Start -> INFO 00a Starting orderer:
+ Version: 2.0.0-alpha
+ Commit SHA: be235fd3a
+ Go version: go1.11.5
+ OS/Arch: linux/amd64
+2019-06-19 06:20:52.219 UTC [orderer.common.server] Start -> INFO 00b Beginning to serve requests
+2019-06-19 06:20:59.661 UTC [core.comm] ServerHandshake -> ERRO 00c TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50104
+2019-06-19 06:21:00.664 UTC [core.comm] ServerHandshake -> ERRO 00d TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50110
+2019-06-19 06:21:01.361 UTC [comm.grpc.server] 1 -> INFO 00e streaming call completed grpc.service=orderer.Cluster grpc.method=Step grpc.peer_address=172.18.0.4:32864 grpc.peer_subject="CN=orderer.example.com,L=San Francisco,ST=California,C=US" error="channel byfn-sys-channel doesn't exist" grpc.code=Unknown grpc.call_duration=260.735µs
+2019-06-19 06:21:02.211 UTC [orderer.common.server] replicateDisabledChains -> INFO 00f Found 1 inactive chains: [byfn-sys-channel]
+2019-06-19 06:21:02.212 UTC [orderer.common.cluster] ReplicateChains -> INFO 010 Will now replicate chains [byfn-sys-channel]
+2019-06-19 06:21:02.227 UTC [orderer.common.cluster] discoverChannels -> INFO 011 Discovered 1 channels: [byfn-sys-channel]
+2019-06-19 06:21:02.227 UTC [orderer.common.cluster] channelsToPull -> INFO 012 Evaluating channels to pull: [byfn-sys-channel]
+2019-06-19 06:21:02.227 UTC [orderer.common.cluster] channelsToPull -> INFO 013 Probing whether I should pull channel byfn-sys-channel
+2019-06-19 06:21:02.243 UTC [core.comm] ServerHandshake -> ERRO 014 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38064
+2019-06-19 06:21:02.309 UTC [core.comm] ServerHandshake -> ERRO 015 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50142
+2019-06-19 06:21:03.252 UTC [core.comm] ServerHandshake -> ERRO 016 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38082
+2019-06-19 06:21:04.674 UTC [core.comm] ServerHandshake -> ERRO 017 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50164
+2019-06-19 06:21:05.153 UTC [core.comm] ServerHandshake -> ERRO 018 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38106
+2019-06-19 06:21:06.100 UTC [core.comm] ServerHandshake -> ERRO 019 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:58840
+2019-06-19 06:21:06.329 UTC [core.comm] ServerHandshake -> ERRO 01a TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42332
+2019-06-19 06:21:06.665 UTC [core.comm] ServerHandshake -> ERRO 01b TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50214
+2019-06-19 06:21:07.116 UTC [core.comm] ServerHandshake -> ERRO 01c TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:58872
+2019-06-19 06:21:07.340 UTC [core.comm] ServerHandshake -> ERRO 01d TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42364
+2019-06-19 06:21:07.700 UTC [core.comm] ServerHandshake -> ERRO 01e TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50254
+2019-06-19 06:21:08.010 UTC [core.comm] ServerHandshake -> ERRO 01f TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38184
+2019-06-19 06:21:08.462 UTC [core.comm] ServerHandshake -> ERRO 020 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:58906
+2019-06-19 06:21:09.062 UTC [core.comm] ServerHandshake -> ERRO 021 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42406
+2019-06-19 06:21:09.228 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 022 Failed connecting to orderer2.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:09.229 UTC [orderer.common.cluster.replication] func1 -> WARN 025 Received error of type 'failed to create new connection: context deadline exceeded' from orderer2.example.com:7050
+2019-06-19 06:21:09.228 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 023 Failed connecting to orderer5.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:09.229 UTC [orderer.common.cluster.replication] func1 -> WARN 026 Received error of type 'failed to create new connection: context deadline exceeded' from orderer5.example.com:7050
+2019-06-19 06:21:09.228 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 024 Failed connecting to orderer3.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:09.229 UTC [orderer.common.cluster.replication] func1 -> WARN 027 Received error of type 'failed to create new connection: context deadline exceeded' from orderer3.example.com:7050
+2019-06-19 06:21:09.229 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 028 Failed connecting to orderer.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:09.229 UTC [orderer.common.cluster.replication] func1 -> WARN 029 Received error of type 'failed to create new connection: context deadline exceeded' from orderer.example.com:7050
+2019-06-19 06:21:09.233 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 02a Failed connecting to orderer4.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:09.234 UTC [orderer.common.cluster.replication] func1 -> WARN 02b Received error of type 'failed to create new connection: context deadline exceeded' from orderer4.example.com:7050
+2019-06-19 06:21:09.234 UTC [orderer.common.cluster.replication] HeightsByEndpoints -> INFO 02c Returning the heights of OSNs mapped by endpoints map[]
+2019-06-19 06:21:09.234 UTC [orderer.common.cluster] channelsToPull -> WARN 02d Could not obtain blocks needed for classifying whether I am in the channel,skipping the retrieval of the chan byfn-sys-channel
+2019-06-19 06:21:09.234 UTC [orderer.common.cluster] ReplicateChains -> INFO 02e Found myself in 0 channels out of 1 : {[] [{byfn-sys-channel 0xc000082980}]}
+2019-06-19 06:21:09.235 UTC [orderer.common.cluster] appendBlock -> INFO 02f Skipping commit of block [0] for channel byfn-sys-channel because height is at 1
+2019-06-19 06:21:09.235 UTC [orderer.common.cluster] PullChannel -> INFO 030 Pulling channel byfn-sys-channel
+2019-06-19 06:21:09.244 UTC [core.comm] ServerHandshake -> ERRO 031 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38214
+2019-06-19 06:21:09.413 UTC [core.comm] ServerHandshake -> ERRO 032 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50298
+2019-06-19 06:21:10.245 UTC [core.comm] ServerHandshake -> ERRO 033 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38234
+2019-06-19 06:21:10.522 UTC [core.comm] ServerHandshake -> ERRO 034 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:58966
+2019-06-19 06:21:11.473 UTC [core.comm] ServerHandshake -> ERRO 035 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.2:50338
+2019-06-19 06:21:11.696 UTC [core.comm] ServerHandshake -> ERRO 036 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38272
+2019-06-19 06:21:11.741 UTC [core.comm] ServerHandshake -> ERRO 037 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42476
+2019-06-19 06:21:13.105 UTC [core.comm] ServerHandshake -> ERRO 038 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:59028
+2019-06-19 06:21:13.347 UTC [core.comm] ServerHandshake -> ERRO 039 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42520
+2019-06-19 06:21:14.085 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 03a Failed connecting to orderer3.example.com:7050: failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp 172.18.0.2:7050: connect: connection refused"
+2019-06-19 06:21:14.085 UTC [orderer.common.cluster.replication] func1 -> WARN 03b Received error of type 'failed to create new connection: connection error: desc = "transport: error while dialing: dial tcp 172.18.0.2:7050: connect: connection refused"' from orderer3.example.com:7050
+2019-06-19 06:21:14.111 UTC [core.comm] ServerHandshake -> ERRO 03c TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:59052
+2019-06-19 06:21:14.249 UTC [core.comm] ServerHandshake -> ERRO 03d TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:38342
+2019-06-19 06:21:14.363 UTC [core.comm] ServerHandshake -> ERRO 03e TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42550
+2019-06-19 06:21:15.421 UTC [core.comm] ServerHandshake -> ERRO 03f TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:59082
+2019-06-19 06:21:15.760 UTC [core.comm] ServerHandshake -> ERRO 040 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:42570
+2019-06-19 06:21:16.236 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 041 Failed connecting to orderer5.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:16.236 UTC [orderer.common.cluster.replication] func1 -> WARN 042 Received error of type 'failed to create new connection: context deadline exceeded' from orderer5.example.com:7050
+2019-06-19 06:21:16.237 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 043 Failed connecting to orderer.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:16.237 UTC [orderer.common.cluster.replication] func1 -> WARN 044 Received error of type 'failed to create new connection: context deadline exceeded' from orderer.example.com:7050
+2019-06-19 06:21:16.237 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 045 Failed connecting to orderer2.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:16.238 UTC [orderer.common.cluster.replication] func1 -> WARN 046 Received error of type 'failed to create new connection: context deadline exceeded' from orderer2.example.com:7050
+2019-06-19 06:21:16.243 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 047 Failed connecting to orderer4.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 06:21:16.243 UTC [orderer.common.cluster.replication] func1 -> WARN 048 Received error of type 'failed to create new connection: context deadline exceeded' from orderer4.example.com:7050
+2019-06-19 06:21:16.243 UTC [orderer.common.cluster.replication] HeightsByEndpoints -> INFO 049 Returning the heights of OSNs mapped by endpoints map[]
+2019-06-19 06:21:16.243 UTC [orderer.common.cluster] ReplicateChains -> PANI 04a Failed pulling system channel: failed obtaining the latest block for channel byfn-sys-channel
+panic: Failed pulling system channel: failed obtaining the latest block for channel byfn-sys-channel
+
+goroutine 27 [running]:
+github.com/hyperledger/fabric/vendor/go.uber.org/zap/zapcore.(*CheckedEntry).Write(0xc000159d90, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/zapcore/entry.go:229 +0x515
+github.com/hyperledger/fabric/vendor/go.uber.org/zap.(*SugaredLogger).log(0xc00000e0a0, 0x1578104, 0x1474a7f, 0x21, 0xc0005b5c00, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/sugar.go:234 +0xf6
+github.com/hyperledger/fabric/vendor/go.uber.org/zap.(*SugaredLogger).Panicf(0xc00000e0a0, 0x1474a7f, 0x21, 0xc0005b5c00, 0x1, 0x1)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/sugar.go:159 +0x79
+github.com/hyperledger/fabric/common/flogging.(*FabricLogger).Panicf(0xc00000e0a8, 0x1474a7f, 0x21, 0xc0005b5c00, 0x1, 0x1)
+	/go/src/github.com/hyperledger/fabric/common/flogging/zap.go:74 +0x60
+github.com/hyperledger/fabric/orderer/common/cluster.(*Replicator).ReplicateChains(0xc0002372c0, 0x14a6110, 0xc0004661c0, 0xc0002372c0)
+	/go/src/github.com/hyperledger/fabric/orderer/common/cluster/replication.go:161 +0x4c2
+github.com/hyperledger/fabric/orderer/common/server.(*replicationInitiator).ReplicateChains(0xc000133bc0, 0xc000082ec0, 0xc0002090b0, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:120 +0x20a
+github.com/hyperledger/fabric/orderer/common/server.(*inactiveChainReplicator).replicateDisabledChains(0xc0004eb7a0)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:224 +0x1f5
+github.com/hyperledger/fabric/orderer/common/server.(*inactiveChainReplicator).run(0xc0004eb7a0)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:202 +0x42
+created by github.com/hyperledger/fabric/orderer/common/server.initializeEtcdraftConsenter
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/main.go:642 +0x3fc
+2019-06-19 07:12:49.352 UTC [localconfig] completeInitialization -> INFO 001 Kafka.Version unset, setting to 0.10.2.0
+2019-06-19 07:12:49.363 UTC [orderer.common.server] prettyPrintStruct -> INFO 002 Orderer config values:
+	General.LedgerType = "file"
+	General.ListenAddress = "0.0.0.0"
+	General.ListenPort = 7050
+	General.TLS.Enabled = true
+	General.TLS.PrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.TLS.Certificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.TLS.RootCAs = [/var/hyperledger/orderer/tls/ca.crt]
+	General.TLS.ClientAuthRequired = false
+	General.TLS.ClientRootCAs = []
+	General.Cluster.ListenAddress = ""
+	General.Cluster.ListenPort = 0
+	General.Cluster.ServerCertificate = ""
+	General.Cluster.ServerPrivateKey = ""
+	General.Cluster.ClientCertificate = "/var/hyperledger/orderer/tls/server.crt"
+	General.Cluster.ClientPrivateKey = "/var/hyperledger/orderer/tls/server.key"
+	General.Cluster.RootCAs = []
+	General.Cluster.DialTimeout = 5s
+	General.Cluster.RPCTimeout = 7s
+	General.Cluster.ReplicationBufferSize = 20971520
+	General.Cluster.ReplicationPullTimeout = 5s
+	General.Cluster.ReplicationRetryTimeout = 5s
+	General.Cluster.ReplicationBackgroundRefreshInterval = 5m0s
+	General.Cluster.ReplicationMaxRetries = 12
+	General.Cluster.SendBufferSize = 10
+	General.Cluster.CertExpirationWarningThreshold = 168h0m0s
+	General.Keepalive.ServerMinInterval = 1m0s
+	General.Keepalive.ServerInterval = 2h0m0s
+	General.Keepalive.ServerTimeout = 20s
+	General.GenesisMethod = "file"
+	General.GenesisProfile = "SampleInsecureSolo"
+	General.SystemChannel = "test-system-channel-name"
+	General.GenesisFile = "/var/hyperledger/orderer/orderer.genesis.block"
+	General.Profile.Enabled = false
+	General.Profile.Address = "0.0.0.0:6060"
+	General.LocalMSPDir = "/var/hyperledger/orderer/msp"
+	General.LocalMSPID = "OrdererMSP"
+	General.BCCSP.ProviderName = "SW"
+	General.BCCSP.SwOpts.SecLevel = 256
+	General.BCCSP.SwOpts.HashFamily = "SHA2"
+	General.BCCSP.SwOpts.Ephemeral = false
+	General.BCCSP.SwOpts.FileKeystore.KeyStorePath = "/var/hyperledger/orderer/msp/keystore"
+	General.BCCSP.SwOpts.DummyKeystore =
+	General.BCCSP.SwOpts.InmemKeystore =
+	General.BCCSP.PluginOpts =
+	General.Authentication.TimeWindow = 15m0s
+	FileLedger.Location = "/var/hyperledger/production/orderer"
+	FileLedger.Prefix = "hyperledger-fabric-ordererledger"
+	RAMLedger.HistorySize = 1000
+	Kafka.Retry.ShortInterval = 5s
+	Kafka.Retry.ShortTotal = 10m0s
+	Kafka.Retry.LongInterval = 5m0s
+	Kafka.Retry.LongTotal = 12h0m0s
+	Kafka.Retry.NetworkTimeouts.DialTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.ReadTimeout = 10s
+	Kafka.Retry.NetworkTimeouts.WriteTimeout = 10s
+	Kafka.Retry.Metadata.RetryMax = 3
+	Kafka.Retry.Metadata.RetryBackoff = 250ms
+	Kafka.Retry.Producer.RetryMax = 3
+	Kafka.Retry.Producer.RetryBackoff = 100ms
+	Kafka.Retry.Consumer.RetryBackoff = 2s
+	Kafka.Verbose = true
+	Kafka.Version = 0.10.2.0
+	Kafka.TLS.Enabled = false
+	Kafka.TLS.PrivateKey = ""
+	Kafka.TLS.Certificate = ""
+	Kafka.TLS.RootCAs = []
+	Kafka.TLS.ClientAuthRequired = false
+	Kafka.TLS.ClientRootCAs = []
+	Kafka.SASLPlain.Enabled = false
+	Kafka.SASLPlain.User = ""
+	Kafka.SASLPlain.Password = ""
+	Kafka.Topic.ReplicationFactor = 1
+	Debug.BroadcastTraceDir = ""
+	Debug.DeliverTraceDir = ""
+	Consensus = map[WALDir:/var/hyperledger/production/orderer/etcdraft/wal SnapDir:/var/hyperledger/production/orderer/etcdraft/snapshot]
+	Operations.ListenAddress = "127.0.0.1:8443"
+	Operations.TLS.Enabled = false
+	Operations.TLS.PrivateKey = ""
+	Operations.TLS.Certificate = ""
+	Operations.TLS.RootCAs = []
+	Operations.TLS.ClientAuthRequired = false
+	Operations.TLS.ClientRootCAs = []
+	Metrics.Provider = "disabled"
+	Metrics.Statsd.Network = "udp"
+	Metrics.Statsd.Address = "127.0.0.1:8125"
+	Metrics.Statsd.WriteInterval = 30s
+	Metrics.Statsd.Prefix = ""
+2019-06-19 07:12:49.576 UTC [orderer.common.cluster] loadVerifier -> INFO 003 Loaded verifier for channel byfn-sys-channel from config block at index 0
+2019-06-19 07:12:49.577 UTC [orderer.common.server] initializeServerConfig -> INFO 004 Starting orderer with TLS enabled
+2019-06-19 07:12:49.579 UTC [orderer.common.server] configureClusterListener -> INFO 005 Cluster listener is not configured, defaulting to use the general listener on port 7050
+2019-06-19 07:12:49.580 UTC [orderer.common.server] initializeMultichannelRegistrar -> INFO 006 Not bootstrapping because of existing chains
+2019-06-19 07:12:49.599 UTC [orderer.consensus.etcdraft] detectSelfID -> WARN 007 Could not find -----BEGIN CERTIFICATE-----
+MIICXDCCAgOgAwIBAgIRAIgu3ySoTEPOGqc8Bv0ioRQwCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTkwNjE0MDBaFw0yOTA2MTYwNjE0MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyMi5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABFRL61bwVSAhSQSd5TzKBNfqLdsEnr9xbo+mUC4S1+Av
++Kx+NzrCQyOn2TZgzzTyebftUxyPHBmE5D7InhjSN0+jgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIOwxtBRXmQNorwE9uOSX9LFgkouDRFV2zkghwhXzDccd
+MCkGA1UdEQQiMCCCFG9yZGVyZXIyLmV4YW1wbGUuY29tgghvcmRlcmVyMjAKBggq
+hkjOPQQDAgNHADBEAiB35VxSXvFxxxpN8eQTYR6QJBzfLJ9vpXDaZ3pKz+j9pQIg
+PtJwFr4fNnrRQdntWK+8D0/7NsT/RaXpkdXCw+qpkts=
+-----END CERTIFICATE-----
+ among [-----BEGIN CERTIFICATE-----
+MIICXDCCAgKgAwIBAgIQGqA5gKeiBTYjzgZTsXdIRDAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWTELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHTAbBgNVBAMTFG9yZGVyZXIzLmV4YW1wbGUuY29tMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAEm5W7oBjHmlrFlM71+UuV/SzxpLoVqNkeyzSqBND2252t
+0tBYzeH/OuyXOTx/xrFXNBVJuEIRtWBtw1Ar5PCN2KOBmDCBlTAOBgNVHQ8BAf8E
+BAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQC
+MAAwKwYDVR0jBCQwIoAgYobEsUAE0pUPV/Exe8UYqAYqER5In+a/splF6aMANLAw
+KQYDVR0RBCIwIIIUb3JkZXJlcjMuZXhhbXBsZS5jb22CCG9yZGVyZXIzMAoGCCqG
+SM49BAMCA0gAMEUCIQC29dgHaVGCeA7szJ6+UTaOoHPt3eO8ezCaoB2zqxsPIgIg
+Fugq3C7cXGsPSslmjrYfSMuEWYYnm2svdAY8DsPlMBM=
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXDCCAgOgAwIBAgIRAOEClgJ3k6Ne8uGgWqg1XKswCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTgxNzQ2MDBaFw0yOTA2MTUxNzQ2MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyNC5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABAOrhKXd+Wl0ErG4wLH1xVW5O0JR2gzlNYX5gG7fRshH
+C7UgpDzb8gi9f8H8AnMziZ/KhoWmhQCgfXKt/LqOLkWjgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIGKGxLFABNKVD1fxMXvFGKgGKhEeSJ/mv7KZRemjADSw
+MCkGA1UdEQQiMCCCFG9yZGVyZXI0LmV4YW1wbGUuY29tgghvcmRlcmVyNDAKBggq
+hkjOPQQDAgNHADBEAiBmZjvsFwGyNK1BPAV95Ny1MP19fvc5BRoILHxG+d4LpAIg
+TDRGfGQQbBABWD6xCzlgTTgirzfKRwKw5nY9hh+YbQ4=
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXDCCAgKgAwIBAgIQaGYMH4z0XYr2nFHaV4rx0zAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWTELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHTAbBgNVBAMTFG9yZGVyZXI1LmV4YW1wbGUuY29tMFkwEwYHKoZIzj0C
+AQYIKoZIzj0DAQcDQgAE/S/sOVo9ZzYsNuSvyVK/p8T6TQ4ClfiRY/zNPC5YGnHU
+q71Fw5SVcjV+L5zgAvFrZO8IGlr/G3ekYPtvqJ+FfaOBmDCBlTAOBgNVHQ8BAf8E
+BAMCBaAwHQYDVR0lBBYwFAYIKwYBBQUHAwEGCCsGAQUFBwMCMAwGA1UdEwEB/wQC
+MAAwKwYDVR0jBCQwIoAgYobEsUAE0pUPV/Exe8UYqAYqER5In+a/splF6aMANLAw
+KQYDVR0RBCIwIIIUb3JkZXJlcjUuZXhhbXBsZS5jb22CCG9yZGVyZXI1MAoGCCqG
+SM49BAMCA0gAMEUCIQDFP7c9On9VyD3KUtEbztHQpv5RbRHz51BByY8y9Zx1pgIg
+HG9cRsOs3rp+RZZpHgw5HtRx/1xkIpiM5yGPlZS+h0Y=
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICWDCCAf+gAwIBAgIQTbmB19ktw+NCSzikEbyrhzAKBggqhkjOPQQDAjBsMQsw
+CQYDVQQGEwJVUzETMBEGA1UECBMKQ2FsaWZvcm5pYTEWMBQGA1UEBxMNU2FuIEZy
+YW5jaXNjbzEUMBIGA1UEChMLZXhhbXBsZS5jb20xGjAYBgNVBAMTEXRsc2NhLmV4
+YW1wbGUuY29tMB4XDTE5MDYxODE3NDYwMFoXDTI5MDYxNTE3NDYwMFowWDELMAkG
+A1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBGcmFu
+Y2lzY28xHDAaBgNVBAMTE29yZGVyZXIuZXhhbXBsZS5jb20wWTATBgcqhkjOPQIB
+BggqhkjOPQMBBwNCAASWvLLpHX8XG+kSRXrEPaM3VIKKFCU589gxX5fPVkblExQY
+M0caCmm+vV97MKKdldTVGusvP5WaybMMas90EqYxo4GWMIGTMA4GA1UdDwEB/wQE
+AwIFoDAdBgNVHSUEFjAUBggrBgEFBQcDAQYIKwYBBQUHAwIwDAYDVR0TAQH/BAIw
+ADArBgNVHSMEJDAigCBihsSxQATSlQ9X8TF7xRioBioRHkif5r+ymUXpowA0sDAn
+BgNVHREEIDAeghNvcmRlcmVyLmV4YW1wbGUuY29tggdvcmRlcmVyMAoGCCqGSM49
+BAMCA0cAMEQCIHPYcrNLaW+4x4A/ZRNsorsPFSMGJhGQWkejoxphgt0WAiBvcY5q
+slYhp3ajwJeridTyiMAfLuvG0WKqi0+wiQdLZw==
+-----END CERTIFICATE-----
+ -----BEGIN CERTIFICATE-----
+MIICXTCCAgOgAwIBAgIRAJ92/8s/DT3y45igLsAk7pswCgYIKoZIzj0EAwIwbDEL
+MAkGA1UEBhMCVVMxEzARBgNVBAgTCkNhbGlmb3JuaWExFjAUBgNVBAcTDVNhbiBG
+cmFuY2lzY28xFDASBgNVBAoTC2V4YW1wbGUuY29tMRowGAYDVQQDExF0bHNjYS5l
+eGFtcGxlLmNvbTAeFw0xOTA2MTgxNzQ2MDBaFw0yOTA2MTUxNzQ2MDBaMFkxCzAJ
+BgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybmlhMRYwFAYDVQQHEw1TYW4gRnJh
+bmNpc2NvMR0wGwYDVQQDExRvcmRlcmVyMi5leGFtcGxlLmNvbTBZMBMGByqGSM49
+AgEGCCqGSM49AwEHA0IABMo5TSK6zvmnjCkVZFAR6UW7xg5yUCnIUHwg4LKG02mj
+iuQMQ9xqJ5pey0WYbOUSB8XFZpv1o90AL3ttw32ssjSjgZgwgZUwDgYDVR0PAQH/
+BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAMBgNVHRMBAf8E
+AjAAMCsGA1UdIwQkMCKAIGKGxLFABNKVD1fxMXvFGKgGKhEeSJ/mv7KZRemjADSw
+MCkGA1UdEQQiMCCCFG9yZGVyZXIyLmV4YW1wbGUuY29tgghvcmRlcmVyMjAKBggq
+hkjOPQQDAgNIADBFAiEA6ujAI8KdQCYqaYMAsjF6tr2nhav/MMh02YvOTyJx938C
+IEvr/v5dEHc8iyq8oMiedJI6scEnag3igD0n1PN/IqUY
+-----END CERTIFICATE-----
+]
+2019-06-19 07:12:49.599 UTC [orderer.common.server] TrackChain -> INFO 008 Adding byfn-sys-channel to the set of chains to track
+2019-06-19 07:12:49.599 UTC [orderer.commmon.multichannel] Initialize -> INFO 009 Starting system channel 'byfn-sys-channel' with genesis block hash a6f0c69018b193a7582fa436419774b4e5e8e96fb6575965c2e7ad5bb8e9f9e3 and orderer type etcdraft
+2019-06-19 07:12:49.599 UTC [orderer.common.server] Start -> INFO 00a Starting orderer:
+ Version: 2.0.0-alpha
+ Commit SHA: be235fd3a
+ Go version: go1.11.5
+ OS/Arch: linux/amd64
+2019-06-19 07:12:49.599 UTC [orderer.common.server] Start -> INFO 00b Beginning to serve requests
+2019-06-19 07:12:58.730 UTC [core.comm] ServerHandshake -> ERRO 00c TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60160
+2019-06-19 07:12:59.587 UTC [common.deliver] deliverBlocks -> WARN 00d [channel: byfn-sys-channel] Rejecting deliver request for 172.18.0.4:56582 because of consenter error
+2019-06-19 07:12:59.589 UTC [orderer.common.server] replicateDisabledChains -> INFO 00e Found 1 inactive chains: [byfn-sys-channel]
+2019-06-19 07:12:59.592 UTC [orderer.common.cluster] ReplicateChains -> INFO 00f Will now replicate chains [byfn-sys-channel]
+2019-06-19 07:12:59.592 UTC [comm.grpc.server] 1 -> INFO 010 streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=172.18.0.4:56582 grpc.peer_subject="CN=orderer.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=6.235714ms
+2019-06-19 07:12:59.608 UTC [orderer.common.cluster] discoverChannels -> INFO 011 Discovered 1 channels: [byfn-sys-channel]
+2019-06-19 07:12:59.608 UTC [orderer.common.cluster] channelsToPull -> INFO 012 Evaluating channels to pull: [byfn-sys-channel]
+2019-06-19 07:12:59.608 UTC [orderer.common.cluster] channelsToPull -> INFO 013 Probing whether I should pull channel byfn-sys-channel
+2019-06-19 07:12:59.615 UTC [core.comm] ServerHandshake -> ERRO 014 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39074
+2019-06-19 07:12:59.739 UTC [core.comm] ServerHandshake -> ERRO 015 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60186
+2019-06-19 07:13:00.601 UTC [core.comm] ServerHandshake -> ERRO 016 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51384
+2019-06-19 07:13:00.625 UTC [core.comm] ServerHandshake -> ERRO 017 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39110
+2019-06-19 07:13:01.223 UTC [core.comm] ServerHandshake -> ERRO 018 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60222
+2019-06-19 07:13:01.605 UTC [core.comm] ServerHandshake -> ERRO 019 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51412
+2019-06-19 07:13:01.821 UTC [core.comm] ServerHandshake -> ERRO 01a TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51436
+2019-06-19 07:13:02.096 UTC [core.comm] ServerHandshake -> ERRO 01b TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39146
+2019-06-19 07:13:02.833 UTC [core.comm] ServerHandshake -> ERRO 01c TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51460
+2019-06-19 07:13:03.208 UTC [core.comm] ServerHandshake -> ERRO 01d TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51458
+2019-06-19 07:13:03.527 UTC [core.comm] ServerHandshake -> ERRO 01e TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60284
+2019-06-19 07:13:04.182 UTC [core.comm] ServerHandshake -> ERRO 01f TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51484
+2019-06-19 07:13:04.223 UTC [core.comm] ServerHandshake -> ERRO 020 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39190
+2019-06-19 07:13:05.477 UTC [core.comm] ServerHandshake -> ERRO 021 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51496
+2019-06-19 07:13:05.744 UTC [core.comm] ServerHandshake -> ERRO 022 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60320
+2019-06-19 07:13:06.280 UTC [core.comm] ServerHandshake -> ERRO 023 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51528
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 024 Failed connecting to orderer2.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 025 Failed connecting to orderer5.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] func1 -> WARN 026 Received error of type 'failed to create new connection: context deadline exceeded' from orderer2.example.com:7050
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 027 Failed connecting to orderer.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] func1 -> WARN 028 Received error of type 'failed to create new connection: context deadline exceeded' from orderer5.example.com:7050
+2019-06-19 07:13:06.611 UTC [orderer.common.cluster.replication] func1 -> WARN 029 Received error of type 'failed to create new connection: context deadline exceeded' from orderer.example.com:7050
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 02a Failed connecting to orderer4.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster.replication] func1 -> WARN 02c Received error of type 'failed to create new connection: context deadline exceeded' from orderer4.example.com:7050
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 02b Failed connecting to orderer3.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster.replication] func1 -> WARN 02d Received error of type 'failed to create new connection: context deadline exceeded' from orderer3.example.com:7050
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster.replication] HeightsByEndpoints -> INFO 02e Returning the heights of OSNs mapped by endpoints map[]
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster] channelsToPull -> WARN 02f Could not obtain blocks needed for classifying whether I am in the channel,skipping the retrieval of the chan byfn-sys-channel
+2019-06-19 07:13:06.612 UTC [orderer.common.cluster] ReplicateChains -> INFO 030 Found myself in 0 channels out of 1 : {[] [{byfn-sys-channel 0xc0006bf640}]}
+2019-06-19 07:13:06.613 UTC [orderer.common.cluster] appendBlock -> INFO 031 Skipping commit of block [0] for channel byfn-sys-channel because height is at 1
+2019-06-19 07:13:06.613 UTC [orderer.common.cluster] PullChannel -> INFO 032 Pulling channel byfn-sys-channel
+2019-06-19 07:13:06.619 UTC [core.comm] ServerHandshake -> ERRO 033 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39238
+2019-06-19 07:13:06.753 UTC [core.comm] ServerHandshake -> ERRO 034 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60352
+2019-06-19 07:13:07.637 UTC [core.comm] ServerHandshake -> ERRO 035 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51550
+2019-06-19 07:13:07.650 UTC [core.comm] ServerHandshake -> ERRO 036 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39278
+2019-06-19 07:13:08.177 UTC [core.comm] ServerHandshake -> ERRO 037 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60392
+2019-06-19 07:13:08.643 UTC [core.comm] ServerHandshake -> ERRO 038 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51582
+2019-06-19 07:13:08.829 UTC [core.comm] ServerHandshake -> ERRO 039 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51602
+2019-06-19 07:13:09.419 UTC [core.comm] ServerHandshake -> ERRO 03a TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39320
+2019-06-19 07:13:09.661 UTC [common.deliver] deliverBlocks -> WARN 03b [channel: byfn-sys-channel] Rejecting deliver request for 172.18.0.4:56846 because of consenter error
+2019-06-19 07:13:09.662 UTC [comm.grpc.server] 1 -> INFO 03c streaming call completed grpc.service=orderer.AtomicBroadcast grpc.method=Deliver grpc.peer_address=172.18.0.4:56846 grpc.peer_subject="CN=orderer.example.com,L=San Francisco,ST=California,C=US" grpc.code=OK grpc.call_duration=1.950189ms
+2019-06-19 07:13:09.837 UTC [core.comm] ServerHandshake -> ERRO 03d TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51634
+2019-06-19 07:13:09.983 UTC [core.comm] ServerHandshake -> ERRO 03e TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51630
+2019-06-19 07:13:10.625 UTC [core.comm] ServerHandshake -> ERRO 03f TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.3:60460
+2019-06-19 07:13:11.276 UTC [core.comm] ServerHandshake -> ERRO 040 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.15:51666
+2019-06-19 07:13:11.514 UTC [core.comm] ServerHandshake -> ERRO 041 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.5:39378
+2019-06-19 07:13:12.181 UTC [core.comm] ServerHandshake -> ERRO 042 TLS handshake failed with error remote error: tls: bad certificate server=Orderer remoteaddress=172.18.0.6:51670
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 043 Failed connecting to orderer5.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] func1 -> WARN 046 Received error of type 'failed to create new connection: context deadline exceeded' from orderer5.example.com:7050
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 044 Failed connecting to orderer2.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] func1 -> WARN 047 Received error of type 'failed to create new connection: context deadline exceeded' from orderer2.example.com:7050
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 045 Failed connecting to orderer.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:13.614 UTC [orderer.common.cluster.replication] func1 -> WARN 048 Received error of type 'failed to create new connection: context deadline exceeded' from orderer.example.com:7050
+2019-06-19 07:13:13.616 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 049 Failed connecting to orderer4.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:13.616 UTC [orderer.common.cluster.replication] func1 -> WARN 04a Received error of type 'failed to create new connection: context deadline exceeded' from orderer4.example.com:7050
+2019-06-19 07:13:13.616 UTC [orderer.common.cluster.replication] probeEndpoint -> WARN 04b Failed connecting to orderer3.example.com:7050: failed to create new connection: context deadline exceeded
+2019-06-19 07:13:13.616 UTC [orderer.common.cluster.replication] func1 -> WARN 04c Received error of type 'failed to create new connection: context deadline exceeded' from orderer3.example.com:7050
+2019-06-19 07:13:13.617 UTC [orderer.common.cluster.replication] HeightsByEndpoints -> INFO 04d Returning the heights of OSNs mapped by endpoints map[]
+2019-06-19 07:13:13.617 UTC [orderer.common.cluster] ReplicateChains -> PANI 04e Failed pulling system channel: failed obtaining the latest block for channel byfn-sys-channel
+panic: Failed pulling system channel: failed obtaining the latest block for channel byfn-sys-channel
+
+goroutine 69 [running]:
+github.com/hyperledger/fabric/vendor/go.uber.org/zap/zapcore.(*CheckedEntry).Write(0xc0005d4160, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/zapcore/entry.go:229 +0x515
+github.com/hyperledger/fabric/vendor/go.uber.org/zap.(*SugaredLogger).log(0xc0001481e8, 0x1578104, 0x1474a7f, 0x21, 0xc00055dc00, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/sugar.go:234 +0xf6
+github.com/hyperledger/fabric/vendor/go.uber.org/zap.(*SugaredLogger).Panicf(0xc0001481e8, 0x1474a7f, 0x21, 0xc00055dc00, 0x1, 0x1)
+	/go/src/github.com/hyperledger/fabric/vendor/go.uber.org/zap/sugar.go:159 +0x79
+github.com/hyperledger/fabric/common/flogging.(*FabricLogger).Panicf(0xc0001481f0, 0x1474a7f, 0x21, 0xc00055dc00, 0x1, 0x1)
+	/go/src/github.com/hyperledger/fabric/common/flogging/zap.go:74 +0x60
+github.com/hyperledger/fabric/orderer/common/cluster.(*Replicator).ReplicateChains(0xc0002d6a20, 0x14a6110, 0xc000870000, 0xc0002d6a20)
+	/go/src/github.com/hyperledger/fabric/orderer/common/cluster/replication.go:161 +0x4c2
+github.com/hyperledger/fabric/orderer/common/server.(*replicationInitiator).ReplicateChains(0xc0003123c0, 0xc00020a700, 0xc0005ca010, 0x1, 0x1, 0x0, 0x0, 0x0)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:120 +0x20a
+github.com/hyperledger/fabric/orderer/common/server.(*inactiveChainReplicator).replicateDisabledChains(0xc00022a720)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:224 +0x1f5
+github.com/hyperledger/fabric/orderer/common/server.(*inactiveChainReplicator).run(0xc00022a720)
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/onboarding.go:202 +0x42
+created by github.com/hyperledger/fabric/orderer/common/server.initializeEtcdraftConsenter
+	/go/src/github.com/hyperledger/fabric/orderer/common/server/main.go:642 +0x3fc
+
