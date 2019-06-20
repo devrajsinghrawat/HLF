@@ -1,0 +1,170 @@
+Generate Crypto Artifacts 
+1) ../bin/cryptogen generate --config=./crypto-config.yaml
+
+2) export FABRIC_CFG_PATH=$PWD
+
+
+Generate Channel Artifacts 
+3) ../bin/configtxgen -profile SampleMultiNodeEtcdRaft -channelID byfn-sys-channel -outputBlock ./channel-artifacts/genesis.block
+
+4) export CHANNEL_NAME=mychannel  && ../bin/configtxgen -profile TwoOrgsChannel -outputCreateChannelTx ./channel-artifacts/channel.tx -channelID $CHANNEL_NAME
+
+5) ../bin/configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org1MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org1MSP
+
+6) ../bin/configtxgen -profile TwoOrgsChannel -outputAnchorPeersUpdate ./channel-artifacts/Org2MSPanchors.tx -channelID $CHANNEL_NAME -asOrg Org2MSP
+
+
+Bring UP the network with RAFT Orderer
+7) docker-compose -f docker-compose-cli.yaml -f docker-compose-etcdraft2.yaml up -d
+
+
+Issues I had faced 
+a) Orderer2, 3,4, 5 were exiting
+b) all Orderer were exiting 
+c) Channel were not able to create due to Access and some times Endorsment reasons 
+
+
+If you face issue regarding TLS Handshake as mentioned in my saparate log file in this repo then try using below command and restart the steps
+docker network prune
+
+If everything goes fine then move to next steps 
+
+Create Channel using CLI container, We will enter the CLI container using the docker exec command
+
+8) docker exec -it cli bash
+
+Now from CLI we can set env veriables and work with those particular peers,  
+
+# Lets work on PEER0 Org1 and Environment variables for PEER0
+
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+CORE_PEER_LOCALMSPID="Org1MSP"
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+
+export CHANNEL_NAME=mychannel
+
+This command returns a genesis block mychannel.block,  which we will use to join the channel. It contains the configuration information specified in channel.tx
+peer channel create -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/channel.tx --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+Now let’s join peer0.org1.example.com to the channel
+peer channel join -b mychannel.block
+
+# Lets work on PEER0 Org2 and Environment variables for PEER0
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+CORE_PEER_LOCALMSPID="Org2MSP"
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+
+Now let’s join peer0.org2.example.com to the channel
+peer channel join -b mychannel.block
+
+Update the anchor peers
+peer channel update -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Org1MSPanchors.tx --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp 
+CORE_PEER_ADDRESS=peer0.org2.example.com:9051 
+CORE_PEER_LOCALMSPID="Org2MSP" 
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt 
+
+peer channel update -o orderer.example.com:7050 -c $CHANNEL_NAME -f ./channel-artifacts/Org2MSPanchors.tx --tls --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+Install and define a chaincode ( Note: Fabric chaincode lifecycle introduced in the v2.0 Alpha release)
+Applications interact with the blockchain ledger through chaincode. Therefore we need to install a chaincode on every peer 
+that will execute and endorse our transactions. However, before we can interact with our chaincode, the members of the channel
+need to agree on a chaincode definition that establishes chaincode governance.
+
+# Package the chaincode before it can be installed on our peers
+
+# this packages a Golang chaincode.
+peer lifecycle chaincode package mycc.tar.gz --path github.com/hyperledger/fabric-samples/chaincode/abstore/go/ --lang golang --label mycc_1
+
+# this packages a Node.js chaincode
+peer lifecycle chaincode package mycc.tar.gz --path /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/abstore/node/ --lang node --label mycc_1
+
+# this packages a java chaincode
+peer lifecycle chaincode package mycc.tar.gz --path /opt/gopath/src/github.com/hyperledger/fabric-samples/chaincode/abstore/java/ --lang java --label mycc_1
+
+- Each of the above commands will create a chaincode package named ``mycc.tar.gz`, which we can use to install the chaincode 
+on our peers. Issue the following command to install the package on peer0 of Org1.
+
+# this command installs a chaincode package on your peer
+peer lifecycle chaincode install mycc.tar.gz
+
+# this returns the details of the packages installed on your peers
+peer lifecycle chaincode queryinstalled
+
+This will return Package ID..
+Installed chaincodes on peer:
+Package ID: mycc_1:1dbc43a27115483a31ee8bd78d88d5e33619b6d2ef6506832e91242a737081b4, Label: mycc_1
+
+We are going to need the package ID for future commands, so let’s go ahead and save it as an environment variable.
+export CC_PACKAGE_ID=mycc_1:1dbc43a27115483a31ee8bd78d88d5e33619b6d2ef6506832e91242a737081b4
+
+# The endorsement policy of mycc will be set to require endorsements from a peer in both Org1 and Org2. 
+Therefore, we also need to install the chaincode on a peer in Org2.
+
+# Environment variables for PEER0 in Org2
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp
+CORE_PEER_ADDRESS=peer0.org2.example.com:9051
+CORE_PEER_LOCALMSPID="Org2MSP"
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt
+
+# this installs a chaincode package on your peer
+peer lifecycle chaincode install mycc.tar.gz
+
+After you install the package, you need to approve a chaincode definition for your organization.
+The chaincode definition includes the important parameters of chaincode governance, including the chaincode name and version.
+
+Because we set the environment variables to operate as Org2 in previous step, we can use the following command to approve 
+a definition of the mycc chaincode for Org2.
+
+# this approves a chaincode definition for your org
+# make note of the --package-id flag that provides the package ID
+# use the --init-required flag to request the ``Init`` function be invoked to initialize the chaincode
+peer lifecycle chaincode approveformyorg --channelID $CHANNEL_NAME --name mycc --version 1.0 --init-required --package-id $CC_PACKAGE_ID --sequence 1 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --waitForEvent
+
+All organizations need to agree on the definition before they can use the chaincode. Modify the following four environment 
+variables to operate as Org1:
+
+# Environment variables for PEER0 ORG1
+CORE_PEER_MSPCONFIGPATH=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp
+CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+CORE_PEER_LOCALMSPID="Org1MSP"
+CORE_PEER_TLS_ROOTCERT_FILE=/opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt
+
+You can now approve a definition for the mycc chaincode as Org1. Chaincode is approved at the organization level. 
+You can issue the command once even if you have multiple peers.
+# this defines a chaincode for your org
+# make note of the --package-id flag that provides the package ID
+# use the --init-required flag to request the Init function be invoked to initialize the chaincode
+peer lifecycle chaincode approveformyorg --channelID $CHANNEL_NAME --name mycc --version 1.0 --init-required --package-id $CC_PACKAGE_ID --sequence 1 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --waitForEvent
+
+Once a sufficient number of channel members have approved a chaincode definition, one member can commit the definition to the
+channel. By default a majority of channel members need to approve a definition before it can be committed. It is possible to 
+discover the approval status for the chanincode definition across all organizations by issuing the following query:
+
+# the flags used for this command are identical to those used for approveformyorg
+# except for --package-id which is not required since it is not stored as part of
+# the definition
+peer lifecycle chaincode queryapprovalstatus --channelID $CHANNEL_NAME --name mycc --version 1.0 --init-required --sequence 1 --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem
+
+The command will produce as output a JSON map showing if the organizations in the channel have approved the chaincode definition
+{
+	"Approved": {
+		"Org1MSP": true,
+		"Org2MSP": true
+	}
+}
+
+Since both channel members have approved the definition, we can now commit it to the channel using the following command. 
+You can issue this command as either Org1 or Org2. 
+
+# this commits the chaincode definition to the channel
+peer lifecycle chaincode commit -o orderer.example.com:7050 --channelID $CHANNEL_NAME --name mycc --version 1.0 --sequence 1 --init-required --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt --waitForEvent
+
+- Invoking the chaincode
+peer chaincode invoke -o orderer.example.com:7050 --isInit --tls true --cafile /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/ordererOrganizations/example.com/orderers/orderer.example.com/msp/tlscacerts/tlsca.example.com-cert.pem -C $CHANNEL_NAME -n mycc --peerAddresses peer0.org1.example.com:7051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt --peerAddresses peer0.org2.example.com:9051 --tlsRootCertFiles /opt/gopath/src/github.com/hyperledger/fabric/peer/crypto/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt -c '{"Args":["Init","a","100","b","100"]}' --waitForEvent
+
+- Query
+peer chaincode query -C $CHANNEL_NAME -n mycc -c '{"Args":["query","a"]}'
